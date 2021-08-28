@@ -20,7 +20,7 @@ int main() {
 	//compute for values
 	int ans=0;
 	for(int i=0; i<26; ++i) {
-		// divide the frequency evenly
+		//divide the frequency evenly
 		int a=(f[i]+1)/2;
 		int b=f[i]-a;
 		//count distinct number of pairs
