@@ -30,5 +30,4 @@ int main() {
 	
 	//output ans
 	cout << ans << "\n";
-	return 0;
 }
