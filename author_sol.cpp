@@ -5,29 +5,26 @@ using namespace std;
 int main() {
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-	
-	//input
 	int n;
 	cin >> n;
-	int f[26];
-	memset(f, 0, sizeof(f));
-	for(int i=0; i<n; ++i) {
+	vector<int> letters(26, 0);
+	for (int i = 0; i < n; i++) {
 		string s;
 		cin >> s;
-		f[s[0]-'a']++;
+		// count the frequency of every starting letter of the names
+		letters[s[0] - 'a']++;
 	}
-	
-	//compute for values
-	int ans=0;
-	for(int i=0; i<26; ++i) {
-		//divide the frequency evenly
-		int a=(f[i]+1)/2;
-		int b=f[i]-a;
-		//count distinct number of pairs
-		ans+=(a*(a-1))/2;
-		ans+=(b*(b-1))/2;
+	int res = 0;
+	for (int i = 0; i < 26; i++) {
+		// divide 'a' and 'b' evenly
+		// 'a' contains the extra student (if the total number is odd)
+		int a = (letters[i] + 1) / 2;
+		// 'b' contains the remaining number after subtracting 'a' from the total
+		int b = letters[i] - a;
+		// calculate the number of distinct pairs in both classes 'a' and 'b'
+		res += (a * (a - 1)) / 2;
+		res += (b * (b - 1)) / 2;
 	}
-	
-	//output ans
-	cout << ans << "\n";
+	cout << res << '\n';
+	return 0;
 }
